@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}
+Show Keys
+{% endblock %}
+{% block content %}
+<form class="show-keys"  method="GET">
+    <label id="available-keys">The Available Keys are: </label>
+    <hr class="hr-show-keys">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="unordered-keys">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+</form>
+{% endblock %}

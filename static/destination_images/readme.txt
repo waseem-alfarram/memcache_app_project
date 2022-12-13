@@ -1,0 +1,1 @@
+This is the store for your uploaded photos to the gallery

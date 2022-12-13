@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}
+Add Image
+{% endblock %}
+{% block content %}
+<form action="{{ url_for('add_image') }}" method="POST" enctype="multipart/form-data" class="put-data">
+    <label for="key">Key: 
+        <input type="number" name="key" id="key" placeholder="Enter a key for your image..." required>
+    </label>
+    <label for="name">Image: 
+        <input type="file" name="name" id="name" required>
+    </label>
+    <button class="put" type="submit" value="put">Put</button>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <label>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </label>
+        {% endif %}
+    {% endwith %}
+</form>
+{% endblock %}

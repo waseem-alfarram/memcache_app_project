@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class="navbar">
+            <h1 class="logo">Photo<span>Gallery</span></h1>
+            <ul>
+                <li><a href="{{ url_for('add_image') }}" class="navbar-item">Add Image</a></li>
+                <li><a href="{{ url_for('show_image') }}" class="navbar-item">Show Image</a></li>
+                <li><a href="{{ url_for('show_keys') }}" class="navbar-item">Show Keys</a></li>
+                <li><a href="{{ url_for('memory_configuration') }}" class="navbar-item">Memory Configurations</a></li>
+                <li><a href="{{ url_for('memory_statistics') }}" class="navbar-item">Memory Statistics</a></li>
+            </ul>
+        </div>
+        <div class="body-content">
+            <h1 class="greeting">Welcome to Our Photo Gallery <span>😄</span></h1>
+            <p class="description">You can use this website to store and retrieve your photos!</p>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

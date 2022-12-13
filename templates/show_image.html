@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+Show Image
+{% endblock %}
+{% block content %}
+<form action="{{ url_for('show_image') }}" method="POST" enctype="multipart/form-data" class="get-data">
+    <label for="key">Key: 
+        <input type="text" name="key" id="key" class="key-show" placeholder="Enter a key for an image..." required>
+    </label>
+    <button class="get" type="submit" value="get">Get</button>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <label>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </label>
+        {% endif %}
+    {% endwith %}
+    {% if image_src %}
+    <img src="{{ image_src }}" alt="photo from gallery" class="get-image">
+    {% endif %}
+    
+    
+</form>
+{% endblock %}

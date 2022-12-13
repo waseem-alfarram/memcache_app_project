@@ -1,0 +1,39 @@
+{% extends "layout.html" %} {% block title %} Memory Statistics {% endblock %}
+{% block content %}
+<h1 style="text-align: center;">Cache Statistics in the last 10 minutes</h1>
+<div class="table-wrapper">
+  <table class="fl-table">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Items No.</th>
+        <th>Cache size (Bytes)</th>
+        <th>Hits No.</th>
+        <th>Miss No.</th>
+        <th>Hits Rate(%)</th>
+        <th>Miss Rate(%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%if data%}
+        {% for record in data %}
+      <tr>
+        
+        <td>{{record[1]}}</td>
+        <td>{{record[2]}}</td>
+        <td>{{record[3]}}</td>
+        <td>{{record[4]}}</td>
+        <td>{{record[5]}}</td>
+        <td>{{record[6]}}</td>
+        <td>{{record[7]}}</td>
+        
+      </tr>
+        {% endfor %} 
+      {%endif%}
+    </tbody>
+
+    <tbody></tbody>
+  </table>
+
+  {% endblock %}
+</div>

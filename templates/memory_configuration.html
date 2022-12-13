@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}
+Memory Configuration
+{% endblock %}
+{% block content %}
+<form action="{{ url_for('memory_configuration') }}" method="POST" class="show-configurations">
+    <label class="config-title">The mem-cache parameters configurations are: </label>
+    <hr class="hr-show-configurations">
+    <label for="capacity" class="capacity">Capacity in MB:
+        <input type="number" name="capacity" id="capacity" placeholder="default capacity is 500MB..." min="0" max="500" required>
+    </label>
+    <label for="replacement-policy-item" class="replacement-policy">Replacement Policy:
+        <input type="radio" id="replacement-policy-item" name="replacement-policy" value="random-replacement" checked> Random Replacement
+        <input type="radio" id="replacement-policy-item" name="replacement-policy" value="least-recently-used"> Least Recently Used
+    </label>
+    <label for="clear-cache" class="clear-cache">Do you want to clear the cache?
+        <input type="radio" id="clear-cache" name="clear-cache" value="no" checked> No
+        <input type="radio" id="clear-cache" name="clear-cache" value="yes"> Yes
+    </label>
+    <button class="submit-configurations" type="submit" value="submit-configurations">Set Configurations</button>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <label class="config-title">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </label>
+        {% endif %}
+    {% endwith %}
+</form>
+{% endblock %}
